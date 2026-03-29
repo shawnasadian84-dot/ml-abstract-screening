@@ -1,0 +1,58 @@
+# ==============================================================================
+# ML-Assisted Abstract Screening Pipeline - Configuration
+# ==============================================================================
+# Fill in the fields below with your own scoping/systematic review details.
+# This file is the only thing you need to edit before running the pipeline.
+#
+# Prompt structure based on:
+#   Cao et al. (2025). "Development of Prompt Templates for Large Language
+#   Model-Driven Screening in Systematic Reviews." Ann Intern Med.
+#   doi:10.7326/ANNALS-24-02189
+# ==============================================================================
+
+
+# --- Your Review Details ---
+
+# Describe the objectives of your scoping or systematic review.
+# Be specific - the model uses this to understand what your review is about.
+review_objectives: >
+  Replace this with your review objectives. For example:
+  "To systematically map patient perspectives on AI integration in healthcare
+  and identify determinants of patient trust in AI-augmented care."
+
+# List your inclusion criteria. Each item should be a complete, self-contained
+# criterion. Number them yourself if you want - the pipeline will also number
+# them automatically in the prompt.
+#
+# Tip: Follow the PCC (Population, Concept, Context) or PICO framework to
+# structure your criteria clearly.
+inclusion_criteria:
+  - "Population: Adults (>=18) including patients, laypersons, or general public."
+  - "Concept: Perceptions, attitudes, trust, or experiences regarding the topic of your review."
+  - "Context: Your relevant setting (e.g., healthcare, education, clinical environments)."
+  - "Study design: Empirical (qualitative, quantitative, mixed-methods) or reviews."
+  - "Language: English."
+  - "Date range: January 2015 - October 2025."
+  - "Availability: Full text accessible for screening and extraction."
+
+# List your exclusion criteria.
+exclusion_criteria:
+  - "No patient/public input (clinicians/educators/students only)."
+  - "Purely technical/algorithmic papers with no patient/public perspectives."
+  - "Editorials/commentaries/news/blogs without empirical or review data."
+  - "Non-English OR outside date range."
+  - "No full text available."
+
+
+# --- Model Settings ---
+
+# OpenAI model to use. Recommended: gpt-4o
+# Other options: gpt-4o-mini (cheaper, slightly less accurate), gpt-4-turbo
+model: gpt-4o
+
+# Temperature controls randomness. 0 = deterministic (recommended for screening).
+temperature: 0
+
+# Maximum tokens the model can output per abstract. 300 is sufficient for
+# a short reasoning paragraph + decision.
+max_output_tokens: 300
